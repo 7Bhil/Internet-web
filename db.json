@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "date": "2024-01-15",
+      "consumption": 2.5,
+      "type": "mobile",
+      "app": "Netflix"
+    },
+    {
+      "id": 2,
+      "date": "2024-01-15",
+      "consumption": 1.2,
+      "type": "wifi",
+      "app": "YouTube"
+    },
+    {
+      "id": 3,
+      "date": "2024-01-16",
+      "consumption": 3.8,
+      "type": "mobile",
+      "app": "Instagram"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "name": "Alerte limite 80%",
+      "threshold": 80,
+      "type": "percentage",
+      "active": true
+    }
+  ],
+  "stats": [
+    {
+      "id": 1,
+      "totalConsumption": 15.6,
+      "mobileConsumption": 8.2,
+      "wifiConsumption": 7.4,
+      "period": "current_month"
+    }
+  ]
+}

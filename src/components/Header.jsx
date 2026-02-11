@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Header = () => {
   const location = useLocation();
 
-  const isActive = (path) => {
+  const isActive = path => {
     return location.pathname === path;
   };
 
@@ -27,7 +27,7 @@ const Header = () => {
 
           <nav className="w-full md:w-auto">
             <ul className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <li key={item.path}>
                   <Link
                     to={item.path}

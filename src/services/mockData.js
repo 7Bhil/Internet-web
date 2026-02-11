@@ -6,7 +6,7 @@ export const mockConsumptionData = {
     { day: 'Jeudi', consumption: 2.5 },
     { day: 'Vendredi', consumption: 3.2 },
     { day: 'Samedi', consumption: 2.8 },
-    { day: 'Dimanche', consumption: 2.4 }
+    { day: 'Dimanche', consumption: 2.4 },
   ],
   monthly: [
     { month: 'Janvier', consumption: 42 },
@@ -14,12 +14,22 @@ export const mockConsumptionData = {
     { month: 'Mars', consumption: 45 },
     { month: 'Avril', consumption: 52 },
     { month: 'Mai', consumption: 48 },
-    { month: 'Juin', consumption: 50 }
+    { month: 'Juin', consumption: 50 },
   ],
   alerts: [
-    { id: 1, type: 'warning', message: '85% de la limite quotidienne atteinte', date: '2024-01-15 14:30' },
-    { id: 2, type: 'info', message: 'Nouveau mois - compteur réinitialisé', date: '2024-01-01 00:00' }
-  ]
+    {
+      id: 1,
+      type: 'warning',
+      message: '85% de la limite quotidienne atteinte',
+      date: '2024-01-15 14:30',
+    },
+    {
+      id: 2,
+      type: 'info',
+      message: 'Nouveau mois - compteur réinitialisé',
+      date: '2024-01-01 00:00',
+    },
+  ],
 };
 
 export const userSettings = {
@@ -29,6 +39,6 @@ export const userSettings = {
   notifications: {
     email: true,
     push: true,
-    threshold: 80
-  }
+    threshold: 80,
+  },
 };

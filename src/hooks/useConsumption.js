@@ -7,7 +7,7 @@ const useConsumption = () => {
     dailyLimit: 2,
     monthlyLimit: 100,
     history: [],
-    alerts: []
+    alerts: [],
   });
 
   const [loading, setLoading] = useState(true);
@@ -27,8 +27,11 @@ const useConsumption = () => {
             // ... plus de données
           ],
           alerts: [
-            { type: 'warning', message: '85% de votre limite quotidienne atteinte' }
-          ]
+            {
+              type: 'warning',
+              message: '85% de votre limite quotidienne atteinte',
+            },
+          ],
         });
         setLoading(false);
       }, 1000);
@@ -41,7 +44,7 @@ const useConsumption = () => {
     setConsumption(prev => ({
       ...prev,
       dailyLimit: daily,
-      monthlyLimit: monthly
+      monthlyLimit: monthly,
     }));
   };
 

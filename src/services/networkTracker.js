@@ -5,9 +5,9 @@ class NetworkTracker {
     this.consumption = {
       today: 0,
       month: 0,
-      history: []
+      history: [],
     };
-    
+
     this.loadFromStorage();
     this.initializePerformanceObserver();
   }
@@ -28,9 +28,12 @@ class NetworkTracker {
   // Observer les requêtes réseau
   initializePerformanceObserver() {
     if ('performance' in window && PerformanceObserver) {
-      const observer = new PerformanceObserver((list) => {
-        list.getEntries().forEach((entry) => {
-          if (entry.initiatorType === 'fetch' || entry.initiatorType === 'xmlhttprequest') {
+      const observer = new PerformanceObserver(list => {
+        list.getEntries().forEach(entry => {
+          if (
+            entry.initiatorType === 'fetch' ||
+            entry.initiatorType === 'xmlhttprequest'
+          ) {
             const size = entry.transferSize || 0;
             this.addConsumption(size);
           }
@@ -45,25 +48,26 @@ class NetworkTracker {
   addConsumption(bytes) {
     const mb = bytes / (1024 * 1024);
     const today = new Date().toISOString().split('T')[0];
-    
+
     // Mettre à jour consommation du jour
     this.consumption.today += mb;
-    
+
     // Mettre à jour consommation du mois
-    const currentMonth = new Date().getMonth();
     this.consumption.month += mb;
-    
+
     // Ajouter à l'historique
-    const todayEntry = this.consumption.history.find(entry => entry.date === today);
+    const todayEntry = this.consumption.history.find(
+      entry => entry.date === today
+    );
     if (todayEntry) {
       todayEntry.consumption += mb;
     } else {
       this.consumption.history.push({
         date: today,
-        consumption: mb
+        consumption: mb,
       });
     }
-    
+
     this.saveToStorage();
   }
 
@@ -73,9 +77,13 @@ class NetworkTracker {
       today: this.consumption.today,
       month: this.consumption.month,
       history: this.consumption.history.slice(-30), // 30 derniers jours
-      average: this.consumption.history.length > 0 
-        ? this.consumption.history.reduce((sum, day) => sum + day.consumption, 0) / this.consumption.history.length
-        : 0
+      average:
+        this.consumption.history.length > 0
+          ? this.consumption.history.reduce(
+              (sum, day) => sum + day.consumption,
+              0
+            ) / this.consumption.history.length
+          : 0,
     };
   }
 
@@ -84,7 +92,7 @@ class NetworkTracker {
     this.consumption = {
       today: 0,
       month: 0,
-      history: []
+      history: [],
     };
     this.saveToStorage();
   }
